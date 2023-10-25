@@ -1,0 +1,75 @@
+<mvc:View controllerName="com.inventory.inventory.controller.ScanPage"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+       xmlns:ndc="sap.ndc"
+	xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page  navButtonPress="onNavBack">
+        <content>
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="SimpleFormDisplay354"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <Label design="Bold"  text="Site Campus" />
+                    <Text id="nameText" text="{globalModel>/siteCampusSelectedKey}" />
+                    <Label  design="Bold"  text="Building" />
+                    <Text   text="{globalModel>/buildingSelectedKey}" />
+                    <Label  design="Bold"   text="Room" />
+                    <Text   text="{globalModel>/roomvalue}" />
+                
+                </f:content>
+            </f:SimpleForm>
+	    </VBox>
+        <HBox  justifyContent="Center">
+            <Input  placeholder="Scan or Enter Tag #"  value="{globalModel>/scanTag}" submit="onSubmitBarCode"></Input> 
+            	<ndc:BarcodeScannerButton
+					id="sampleBarcodeScannerButtonZebraOne"
+					scanSuccess="onScanSuccessOne"
+					scanFail="onScanErrorOne"
+					inputLiveUpdate="onScanLiveUpdate"
+					dialogTitle="Barcode Scanner Button1 Sample"
+					keepCameraScan="false"
+					class="sampleBarcodeScannerButtonWithZebraEB"
+				/>
+            <!-- <Button icon="sap-icon://add"  press="onAddButtonPress"></Button> -->
+            
+        </HBox>
+        <VBox class="sapUiLargeMarginBeginEnd">
+            	<List  id="scanTgListId"   items="{path: 'oScanPageModel>/scanedTags'}" >
+                    <CustomListItem>
+                        <HBox/>
+                        <HBox justifyContent="SpaceBetween"> 
+                             <Title  text="{oScanPageModel>tag}"  class="sapUiSmallMarginBegin sapUiSmallMarginTop"></Title>
+                             <!-- <Button icon="sap-icon://delete" type="Default"></Button> -->
+                            
+                             <core:Icon  src="sap-icon://delete"   class="sapUiSmallMarginTop sapUiSmallMarginEnd" press="onDeletepress"  color="Critical" ></core:Icon>
+                        </HBox>
+                        <HBox/>
+                    </CustomListItem>
+            	</List>
+
+        </VBox>
+        </content>
+          <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer />
+				<Button  text="Next"  press="onNextPress"></Button>
+			</OverflowToolbar>
+        
+        </footer>
+    </Page>
+</mvc:View>

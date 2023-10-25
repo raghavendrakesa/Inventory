@@ -1,0 +1,189 @@
+{
+    "_version": "1.58.0",
+    "sap.app": {
+        "id": "com.inventory.inventory",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.11.2",
+            "toolsId": "d34a0051-e998-4496-9e49-8ab1fa1a0bb6"
+        },
+        "dataSources": {
+            "asset_Data": {
+                "uri": "model/Data.json",
+                "type": "JSON"
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+              "inventory-experience": {
+                "semanticObject": "inventory",
+                "action": "experience",
+                "title": "{{flpTitle}}",
+                "subTitle": "{{flpSubtitle}}",
+                "signature": {
+                  "parameters": {},
+                  "additionalParameters": "allowed"
+                }
+              }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.119.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.inventory.inventory.i18n.i18n"
+                }
+            },
+            "globalModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "asset_Data"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.inventory.inventory.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteHome",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetHome"
+                    ]
+                },
+                {
+                    "name": "ScanPage",
+                    "pattern": "scanPage",
+                    "target": [
+                        "ScanPage"
+                    ]
+                },
+                {
+                    "name": "UnScanPage",
+                    "pattern": "unscanPage",
+                    "target": [
+                        "UnScanPage"
+                    ]
+                },
+                {
+                    "name": "OverviewInventory",
+                    "pattern": "OverviewInventory",
+                    "target": [
+                        "OverviewInventory"
+                    ]
+                },
+                {
+                    "name": "RouteAssetDetail",
+                    "pattern": "detail/{sTag}",
+                    "target": [
+                        "AssetDetail"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetHome": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Home",
+                    "viewName": "Home"
+                },
+                "ScanPage": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ScanPage",
+                    "viewName": "ScanPage"
+                },
+                "UnScanPage": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "unScanPage",
+                    "viewName": "UnScanPage"
+                },
+                "OverviewInventory": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "OverviewInventory",
+                    "viewName": "OverviewInventory"
+                },
+                "AssetDetail": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "AssetDetail",
+                    "viewName": "AssetDetail"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.inventory.inventory.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "cominventoryinventory"
+    }
+}

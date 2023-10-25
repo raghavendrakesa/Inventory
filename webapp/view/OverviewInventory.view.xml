@@ -1,0 +1,50 @@
+<mvc:View controllerName="com.inventory.inventory.controller.OverviewInventory"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page  navButtonPress="onNavBack">
+        <content>
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="SimpleFormDisplay354"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <Label design="Bold"  text="Site Campus" />
+                    <Text id="nameText"   text="{globalModel>/siteCampusSelectedKey}" />
+                    <Label  design="Bold"  text="Building" />
+                    <Text   text="{globalModel>/buildingSelectedKey}" />
+                    <Label  design="Bold"   text="Room" />
+                    <Text   text="{globalModel>/roomvalue}" />
+                
+                </f:content>
+            </f:SimpleForm>
+	    </VBox>
+         <Title text="Tags to Inventory" class="sapUiLargeMarginBegin"></Title>
+        <VBox class="sapUiLargeMarginBeginEnd" items="{path: 'globalModel>/AssetListSet'}">
+                 <!-- <Label  design="bold" text="{globalModel>tag}"></Label> -->
+                 <Text text="{globalModel>tag}" />
+        </VBox>
+        </content>
+          <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer />
+				<Button  text="Submit"  press="onSubmitPress"></Button>
+			</OverflowToolbar>
+        
+        </footer>
+    </Page>
+</mvc:View>

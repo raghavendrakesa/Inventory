@@ -1,0 +1,49 @@
+<mvc:View controllerName="com.inventory.inventory.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}"  showHeader="false"  showFooter="true">
+        <content>
+        <VBox id="vboxId" class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Select Inventory Area"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label id="siteCampusLabelId" text="Site Campus" />
+				<ComboBox  selectedKey="{globalModel>/siteCampusSelectedKey}"   items="{globalModel>/siteCampusSet}"  id="siteCampusCBoxId" placeholder="Select Site Campus">
+					<core:Item id="_IDGenItem1" key="{globalModel>key}" text="{globalModel>text}" />
+				</ComboBox>
+				<Label text="Building"  id="buildingId" />
+				<ComboBox   selectedKey="{globalModel>/buildingSelectedKey}"   placeholder="Select Building"  items="{globalModel>/buildingSet}" id="buildingCboxId">
+					<core:Item id="_IDGenItem2" key="{globalModel>key}" text="{globalModel>text}" />
+				</ComboBox>
+				<Label text="Room" id="roomId"/>
+                <Input placeholder="Enter Room" value="{globalModel>/roomvalue}"></Input>
+			</f:content>
+		</f:SimpleForm>
+		</VBox>
+        </content>
+        <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer />
+				<Button  text="Continue"  press="onPressContinue"></Button>
+			</OverflowToolbar>
+        
+        </footer>
+    </Page>
+</mvc:View>

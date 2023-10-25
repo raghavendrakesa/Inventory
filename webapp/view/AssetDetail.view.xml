@@ -1,0 +1,116 @@
+<mvc:View controllerName="com.inventory.inventory.controller.AssetDetail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" >
+       <content>
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="SimpleFormDisplay354"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <Label   text="Asset #" />
+                    <Text id="nameText" text="{oDetailModel>/tagDetails/0/asset}" />
+                    <Label text="Class" />
+                    <Text  text="{oDetailModel>/tagDetails/0/class}"/>
+                    <Label text="Last Inventory" />
+                    <Text  text="{oDetailModel>/tagDetails/0/lastInventory}"/>
+                   
+                </f:content>
+            </f:SimpleForm>
+        </VBox>
+        	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+            <core:Title  text="Description"/>
+				<Label text="Asset Description Line 1" />
+				<TextArea  value="{oDetailModel>/tagDetails/0/assetDescline1}" />
+
+                <Label text="Asset Description Line 2" />
+				<TextArea  value="{oDetailModel>/tagDetails/0/assetDescline2}" />
+
+                <Label text="Asset Description Line 3" />
+				<TextArea  value="{oDetailModel>/tagDetails/0/assetDescline3}" />
+
+                <Label text="Serial #" />
+				<Input  value="{oDetailModel>/tagDetails/0/serial}" />
+
+                <Label text="Manufacturer" />
+				<Input  value="{oDetailModel>/tagDetails/0/manufacturer}" />
+
+                <Label text="Vendor" />
+				<Input  value="{oDetailModel>/tagDetails/0/vendor}" />
+
+                <core:Title  text="Location"/>
+
+                <Label text="Tag #" />
+				<Input  value="{oDetailModel>/tagDetails/0/tag}" />
+
+                <Label text="Site Campus" />
+                <ComboBox  selectedKey="{oDetailModel>/tagDetails/0/siteCampus}"   items="{globalModel>/siteCampusSet}"  id="siteCampusCBoxId" placeholder="Select Site Campus">
+					<core:Item id="_IDGenItem1" key="{globalModel>key}" text="{globalModel>text}" />
+				</ComboBox>
+
+				<!-- <Input  value="{oDetailModel>/tagDetails/0/siteCampus}" /> -->
+               
+                <Label text="Building" />
+				<Input  value="{oDetailModel>/tagDetails/0/building}" />
+
+                <Label text="Room" />
+				<Input  value="{oDetailModel>/tagDetails/0/room}" />
+
+                <core:Title  text="Financials"/>
+
+                <Label text="Net Booking Value" />
+				<Input  value="{oDetailModel>/tagDetails/0/netBookingValue}"  editable="false"/>
+
+                <Label text="Aquisition Value" />
+				<Input  value="{oDetailModel>/tagDetails/0/acquisitionValue}"  editable="false"/>
+
+                <Label text="Po #" />
+				<Input  value="{oDetailModel>/tagDetails/0/po}"  editable="false"/>
+
+
+
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+
+       </content>
+        <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer />
+				<Button  text="Save"  press="onPressSave"></Button>
+			</OverflowToolbar>
+        
+        </footer>
+    </Page>
+</mvc:View>

@@ -1,0 +1,55 @@
+<mvc:View controllerName="com.inventory.inventory.controller.UnScanPage"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page  navButtonPress="onNavBack">
+        <content>
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm id="SimpleFormDisplay354"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                labelSpanXL="3"
+                labelSpanL="3"
+                labelSpanM="3"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="4"
+                emptySpanL="4"
+                emptySpanM="4"
+                emptySpanS="0"
+                columnsXL="1"
+                columnsL="1"
+                columnsM="1"
+                singleContainerFullSize="false" >
+                <f:content>
+                    <Label design="Bold"  text="Site" />
+                    <Text id="nameText"    text="{globalModel>/siteCampusSelectedKey}"  />
+                    <Label  design="Bold"  text="Building" />
+                    <Text   text="{globalModel>/buildingSelectedKey}" />
+                    <Label  design="Bold"   text="Room" />
+                    <Text   text="{globalModel>/roomvalue}" />
+                
+                </f:content>
+            </f:SimpleForm>
+	    </VBox>
+        <HBox  justifyContent="Center" class="sapUiSmallMarginTopBottom">
+         <Text id="_IDGenText1" text="These tags have been assigned to this room, but have not been scanned." ></Text>
+        </HBox>
+         <VBox class="sapUiLargeMarginBeginEnd" selectionChange="onListPress">
+            	<List 	items="{path: 'globalModel>/AssetListSet'}" >
+                   	<StandardListItem  press="onListPress"  type="Navigation"
+                        title="{globalModel>tag}"
+                        description="{globalModel>description}"/>
+            	</List>
+        </VBox> 
+        </content>
+          <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer />
+				<Button  text="Next"  press="onNextPress"></Button>
+			</OverflowToolbar>
+        
+        </footer>
+    </Page>
+</mvc:View>
